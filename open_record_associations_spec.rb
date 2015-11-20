@@ -32,7 +32,7 @@ describe OpenRecord do
         p1.adresse.must_equal adr1
       end
 
-      it "peut etre appele apres la creation de l'objet" do
+      _it "peut etre appele apres la creation de l'objet" do
         p1.a_un Telephone
         assert p1.respond_to?(:telephone)
         assert p1.respond_to?(:telephone=)
@@ -44,23 +44,23 @@ describe OpenRecord do
     describe "#a_plusieurs" do
       let(:p1) { OpenRecord.new( nom: "Tremblay" ) { a_plusieurs Telephone } }
 
-      it "ajoute les methodes (reader et writer) avec un nom au pluriel" do
+      _it "ajoute les methodes (reader et writer) avec un nom au pluriel" do
         assert p1.respond_to?(:telephones)
         assert p1.respond_to?(:telephones=)
       end
 
-      it "definit l'attribut avec une valeur [] par defaut" do
+      _it "definit l'attribut avec une valeur [] par defaut" do
         p1.telephones.must_equal []
       end
 
-      it "definit correctement le reader et le writer" do
+      _it "definit correctement le reader et le writer" do
         p1.telephones << tel1 << tel2
         p1.telephones.must_equal [tel1, tel2]
         p1.telephones[0].must_equal tel1
         p1.telephones[1].must_equal tel2
       end
 
-      it "peut etre appele apres la creation de l'objet... avec n'importe quelle classe" do
+      _it "peut etre appele apres la creation de l'objet... avec n'importe quelle classe" do
         p1.a_un Fixnum
         assert p1.respond_to?(:fixnum)
         assert p1.respond_to?(:fixnum=)
@@ -69,7 +69,7 @@ describe OpenRecord do
       end
     end
 
-    it "permet de definir des attributs et des associations dans l'appel du constructeur" do
+    _it "permet de definir des attributs et des associations dans l'appel du constructeur" do
       o1, o2, o3 = Object.new, Object.new, Object.new
       personne = OpenRecord.new( nom: "Tremblay", prenom: "Guy" ) do
         a_un Fixnum, 10

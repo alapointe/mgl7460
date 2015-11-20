@@ -29,20 +29,20 @@ describe OpenRecord do
       personne.prenom.must_equal "Guy"
     end
 
-    it "definit des methodes pour les attributs lorsque fournis au new" do
+    _it "definit des methodes pour les attributs lorsque fournis au new" do
       personne = OpenRecord.new( nom: "Tremblay", prenom: "Guy" )
       assert personne.respond_to?(:nom)
       assert personne.respond_to?(:prenom)
     end
 
-    it "definit les valeurs des attributs lorsque fournis au new" do
+    _it "definit les valeurs des attributs lorsque fournis au new" do
       personne = OpenRecord.new( nom: "Tremblay", prenom: "Guy" )
 
       personne.nom.must_equal "Tremblay"
       personne.prenom.must_equal "Guy"
     end
 
-    it "permet de definir les attributs dans le constructeur ou meme dans le bloc" do
+    _it "permet de definir les attributs dans le constructeur ou meme dans le bloc" do
       personne = OpenRecord.new( nom: "Tremblay", prenom: "Guy" ) do
         self.age = 57
       end

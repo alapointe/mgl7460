@@ -13,6 +13,15 @@ class OpenRecord
   # Definit le setter/getter lors d'une premiere affectation.
   #
   def method_missing( id, *args )
+    #puts(id)
+    if id.to_s =~ /=$/
+    then
+      tmp = id.to_s.chop
+      definir_reader_et_writer(tmp.to_sym)
+    else  
+      raise NoMethodError, id.to_s
+    end
+      #puts(id)
   end
 
   #
@@ -22,9 +31,14 @@ class OpenRecord
   def definir_reader_et_writer( id )
     DBC.require( id.class == Symbol,
                  "*** Les attributs ou associations doivent etre definis via des symboles: id = #{id}" )
-
+    define_singleton_method id do
+      instance_eval "@#{id}"
+    end
+    
+    define_singleton_method "#{id}=" do |v|
+      instance_eval "@#{id} = #{v}"
+    end
   end
-
   private :definir_reader_et_writer
 
 
