@@ -13,7 +13,7 @@ class Array
 
   def method_missing( id, *args, &block )
     nom_methode = "#{id}"
-
+    #commentaire
 
     raise NoMethodError, "Methode non-definie `#{id}' pour #{self}", caller(1)
   end
